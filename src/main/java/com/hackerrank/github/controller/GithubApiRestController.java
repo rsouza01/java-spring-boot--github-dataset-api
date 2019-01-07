@@ -1,6 +1,5 @@
 package com.hackerrank.github.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hackerrank.github.enums.ActorsOrdering;
 import com.hackerrank.github.model.Actor;
 import com.hackerrank.github.model.Event;
 import com.hackerrank.github.services.ActorService;
@@ -38,7 +39,7 @@ public class GithubApiRestController {
 	@ResponseStatus(HttpStatus.OK)
 	public void deleteAllEvents(HttpServletRequest request) {
 
-		//DELETE ALL
+		eventService.deleteAll();
 	}
 
 
@@ -50,11 +51,11 @@ public class GithubApiRestController {
 	 */
 	@RequestMapping(value = "/events", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public Long addNewEvent(HttpServletRequest request) {
+	public ResponseEntity<Long> addNewEvent(@RequestBody Event event, HttpServletRequest request) {
 
-		//Add new event
-
-		return 0L;
+		Long eventId = eventService.addNewEvent(event);
+		
+		return new ResponseEntity<Long>(eventId, HttpStatus.OK);	
 	}
 	
 	/**
@@ -67,10 +68,9 @@ public class GithubApiRestController {
 	@RequestMapping(value = "/events", method = RequestMethod.GET)
 	public ResponseEntity<List<Event>> getAllEvents(HttpServletRequest request) {
 
-		List<Event> events = new ArrayList<>();
+		List<Event> events = eventService.getAllEvents();
 		
-		return new ResponseEntity<List<Event>>(
-				events, HttpStatus.OK);	
+		return new ResponseEntity<List<Event>>(events, HttpStatus.OK);	
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class GithubApiRestController {
 	@RequestMapping(value = "/events/actors/{actorID}", method = RequestMethod.GET)
 	public ResponseEntity<List<Event>> getAllEventsByActorId(@PathVariable("actorID") int actorID, HttpServletRequest request) {
 
-		List<Event> events = new ArrayList<>();
+		List<Event> events = eventService.getAllEvents(actorID);
 		
 		return new ResponseEntity<List<Event>>( events, HttpStatus.OK);	
 	}
@@ -107,7 +107,7 @@ public class GithubApiRestController {
 	@RequestMapping(value = "/actors", method = RequestMethod.GET)
 	public ResponseEntity<List<Actor>> getAllActors(HttpServletRequest request) {
 
-		List<Actor> actors = new ArrayList<>();
+		List<Actor> actors = actorService.getAllActors(ActorsOrdering.NUMBER_OF_EVENTS);
 		
 		return new ResponseEntity<List<Actor>>(actors, HttpStatus.OK);	
 	}
@@ -127,7 +127,7 @@ public class GithubApiRestController {
 	@RequestMapping(value = "/actors/streak", method = RequestMethod.GET)
 	public ResponseEntity<List<Actor>> getAllActorsOrderByStreak(HttpServletRequest request) {
 
-		List<Actor> actors = new ArrayList<>();
+		List<Actor> actors = actorService.getAllActors(ActorsOrdering.MAXIMUM_STREAK);
 		
 		return new ResponseEntity<List<Actor>>(actors, HttpStatus.OK);	
 	}
