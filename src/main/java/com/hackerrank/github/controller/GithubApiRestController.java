@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,10 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hackerrank.github.model.Actor;
 import com.hackerrank.github.model.Event;
+import com.hackerrank.github.services.ActorService;
+import com.hackerrank.github.services.EventService;
 
 @RestController
 public class GithubApiRestController {
 	
+	@Autowired
+	private EventService eventService;
+	
+	@Autowired
+	private ActorService actorService;
 
 	/**
 	 * Erasing all the events: The service should be able to erase all the events by the DELETE request at /erase. 
