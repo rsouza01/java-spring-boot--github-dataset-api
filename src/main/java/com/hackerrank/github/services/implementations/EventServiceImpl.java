@@ -2,6 +2,7 @@ package com.hackerrank.github.services.implementations;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ import com.hackerrank.github.repository.EventRepository;
 import com.hackerrank.github.services.EventService;
 
 @Service
-public class EventServiceImpl implements EventService {
+public class EventServiceImpl extends GithubService implements EventService {
 
 	@Autowired
 	private EventRepository eventRepository;
@@ -22,14 +23,15 @@ public class EventServiceImpl implements EventService {
 
 	@Override
 	public Long addNewEvent(Event event) {
-		// TODO Auto-generated method stub
-		return null;
+		Event newEvent = eventRepository.save(event);
+		return newEvent.getId();
 	}
-
+	
+	
 	@Override
 	public List<Event> getAllEvents() {
-		// TODO Auto-generated method stub
-		return null;
+			
+		return GithubService.toList(eventRepository.findAll());
 	}
 
 	@Override

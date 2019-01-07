@@ -3,9 +3,16 @@ package com.hackerrank.github.model;
 import java.sql.Timestamp;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.data.annotation.CreatedDate;
 
 
 @Entity
@@ -19,8 +26,17 @@ public class Event {
 	
 	private String type;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)	
     private Actor actor;
+    
+    
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)	
     private Repo repo;
+
     private Timestamp createdAt;
 
     public Event() {
