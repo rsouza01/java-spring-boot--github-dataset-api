@@ -18,7 +18,7 @@ public class EventServiceImpl extends GithubService implements EventService {
 
 	@Override
 	public void deleteAll() {
-		
+		eventRepository.deleteAll();
 	}
 
 	@Override
