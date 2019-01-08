@@ -10,12 +10,16 @@ import org.springframework.transaction.annotation.Transactional;
 import com.hackerrank.github.model.Event;
 
 public interface EventRepository extends CrudRepository<Event, Long> {
-	
+
+    @Override
+    Iterable<Event> findAll();
+
+	List<Event>  findByActorIdOrderByIdAsc(long actorID);
+
 	List<Event> findByActorId(int actorID);
 	
 	@Transactional
 	@Modifying
 	@Query("DELETE FROM Event")
 	void deleteAll();
-	
 }

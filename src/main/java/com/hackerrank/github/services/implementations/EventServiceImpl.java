@@ -35,8 +35,9 @@ public class EventServiceImpl extends GithubService implements EventService {
 	}
 
 	@Override
-	public List<Event> getAllEvents(int actorID) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Event> getAllEvents(long actorID) {
+		
+		return GithubService.toList(eventRepository.findByActorIdOrderByIdAsc(actorID));
+		
 	}	
 }

@@ -16,9 +16,11 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.annotation.CreatedDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 @Entity
-//@Table(name="TB_EVENT")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Event {
 	
 	

@@ -87,12 +87,27 @@ public class GithubApiRestController {
 	 * @return
 	 */
 	@RequestMapping(value = "/events/actors/{actorID}", method = RequestMethod.GET)
-	public ResponseEntity<List<Event>> getAllEventsByActorId(@PathVariable("actorID") int actorID, HttpServletRequest request) {
+	public ResponseEntity<List<Event>> getAllEventsByActorId(@PathVariable("actorID") long actorID, HttpServletRequest request) {
 
 		List<Event> events = eventService.getAllEvents(actorID);
 		
 		return new ResponseEntity<List<Event>>( events, HttpStatus.OK);	
 	}
+	
+	/**
+	 * Updating the avatar URL of the actor: The service should be able to update the avatar URL of the actor by the PUT request at /actors. 
+	 * The actor JSON is sent in the request body. If the actor with the id does not exist then the response code should be 404, or if there are other 
+	 * fields being updated for the actor then the HTTP response code should be 400, otherwise, the response code should be 200.
+	 * @param actor
+	 * @param request
+	 * @return 
+	 */
+	@RequestMapping(value = "/actors", method = RequestMethod.PUT)
+	public ResponseEntity<Long> updateActorAvatar(@RequestBody Actor actor, HttpServletRequest request) {
+
+		return new ResponseEntity<Long>( actor.getId(), HttpStatus.OK);
+	}
+
 	
 	/**
 	 * Returning the actor records ordered by the total number of events: The service should be able to return the JSON array of all the actors sorted 
