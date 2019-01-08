@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Repo {
 
 	@Id
-    @GeneratedValue(strategy=GenerationType)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
 	private String name;
