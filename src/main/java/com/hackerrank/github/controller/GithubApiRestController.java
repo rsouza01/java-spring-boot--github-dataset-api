@@ -52,12 +52,11 @@ public class GithubApiRestController {
 	 * @param request
 	 */
 	@RequestMapping(value = "/events", method = RequestMethod.POST)
-	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<Long> addNewEvent(@RequestBody Event event, HttpServletRequest request) {
 
 		Long eventId = eventService.addNewEvent(event);
 		
-		return new ResponseEntity<Long>(eventId, HttpStatus.OK);	
+		return new ResponseEntity<Long>(eventId, HttpStatus.CREATED);	
 	}
 	
 	/**
