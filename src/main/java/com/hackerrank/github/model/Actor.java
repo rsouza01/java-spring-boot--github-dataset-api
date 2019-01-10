@@ -13,7 +13,8 @@ public class Actor {
 	private Long id;
     
 	private String login;
-    private String avatar;
+
+    private String avatar_url;
 
     public Actor() {
     }
@@ -21,7 +22,7 @@ public class Actor {
     public Actor(Long id, String login, String avatar) {
         this.id = id;
         this.login = login;
-        this.avatar = avatar;
+        this.avatar_url = avatar;
     }
     
     public Long getId() {
@@ -40,11 +41,11 @@ public class Actor {
         this.login = login;
     }
     
-    public String getAvatar() {
-        return avatar;
+    public String getAvatar_url() {
+        return avatar_url;
     }
     
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public void setAvatar_url(String avatar) {
+        this.avatar_url = avatar;
     }
 }

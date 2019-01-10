@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hackerrank.github.enums.ActorsOrdering;
+import com.hackerrank.github.exceptions.ActorNotFoundException;
+import com.hackerrank.github.exceptions.ActorUpdateFieldsOtherThanAvatarException;
 import com.hackerrank.github.model.Actor;
 import com.hackerrank.github.model.Event;
 import com.hackerrank.github.services.ActorService;
@@ -105,7 +107,17 @@ public class GithubApiRestController {
 	@RequestMapping(value = "/actors", method = RequestMethod.PUT)
 	public ResponseEntity<Long> updateActorAvatar(@RequestBody Actor actor, HttpServletRequest request) {
 
-		return new ResponseEntity<Long>( actor.getId(), HttpStatus.OK);
+		try {
+			
+			actorService.updateActorAvatar(actor);
+			
+			return new ResponseEntity<Long>( -1L, HttpStatus.OK);
+
+		} catch (ActorNotFoundException e) {
+			return new ResponseEntity<Long>( -1L, HttpStatus.NOT_FOUND);
+		} catch (ActorUpdateFieldsOtherThanAvatarException e) {
+			return new ResponseEntity<Long>( -1L, HttpStatus.BAD_REQUEST);
+		}
 	}
 
 	
