@@ -18,8 +18,11 @@ public class ActorServiceImpl implements ActorService {
 
 	@Override
 	public List<Actor> getAllActors(ActorsOrdering ordering) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		switch(ordering) {
+			case NUMBER_OF_EVENTS: return GithubService.toList(actorRepository.findActorsOrderByNumberEventsDesc()); 
+			case MAXIMUM_STREAK: return GithubService.toList(actorRepository.findActorsOrderByMaximumStreakDesc());
+			default: return GithubService.toList(actorRepository.findActorsOrderByMaximumStreakDesc());
+		}
 	}	
-	
 }

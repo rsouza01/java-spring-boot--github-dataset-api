@@ -14,7 +14,7 @@ public interface EventRepository extends CrudRepository<Event, Long> {
     @Override
     Iterable<Event> findAll();
 
-	List<Event>  findByActorIdOrderByIdAsc(long actorID);
+	List<Event> findByActorIdOrderByIdAsc(long actorID);
 
 	List<Event> findByActorId(int actorID);
 	
