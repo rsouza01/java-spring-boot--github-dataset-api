@@ -3,6 +3,9 @@
 
 # Maven
 
+
+.classpath 
+
 target/
 pom.xml.tag
 pom.xml.releaseBackup
@@ -227,4 +230,4 @@ pickle-email-*.html
 # Ignore node_modules
 node_modules/
 
-.classpath 
+

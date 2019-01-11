@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -88,6 +89,7 @@ public class GithubApiRestController {
 	 * @return
 	 */
 	@RequestMapping(value = "/events/actors/{actorID}", method = RequestMethod.GET)
+	@ResponseBody
 	public ResponseEntity<List<Event>> getAllEventsByActorId(@PathVariable("actorID") long actorID, HttpServletRequest request) {
 
 		List<Event> events = eventService.getAllEvents(actorID);
