@@ -2,8 +2,6 @@ package com.hackerrank.github.repository;
 
 import java.util.List;
 
-import javax.persistence.Id;
-
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 

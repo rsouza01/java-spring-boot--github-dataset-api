@@ -205,6 +205,7 @@ capybara-*.html
 *.orig
 rerun.txt
 pickle-email-*.html
+/lib
 
 ## Environment normalization:
 /.bundle
@@ -225,3 +226,5 @@ pickle-email-*.html
 
 # Ignore node_modules
 node_modules/
+
+.classpath 

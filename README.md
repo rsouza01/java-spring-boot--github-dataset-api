@@ -45,9 +45,9 @@ The REST service should implement the following functionalities:
 
 You should complete the given incomplete project so that it passes all the test cases when running the provided JUnit tests. The project by default supports the use of H2 database, but you can make use of any database to store the events data by specifying the dependency in the pom.xml file.
 ```sh
-mvn clean spring-boot:run
-mvn clean install
-mvn clean test; cat target/customReports/result.txt
+/home/rsouza/Ontwikkeling/apache-maven-3.5.4/bin/mvn clean spring-boot:run
+/home/rsouza/Ontwikkeling/apache-maven-3.5.4/bin/mvn clean install
+/home/rsouza/Ontwikkeling/apache-maven-3.5.4/bin/mvn clean test; cat target/customReports/result.txt
 ```
 
 
