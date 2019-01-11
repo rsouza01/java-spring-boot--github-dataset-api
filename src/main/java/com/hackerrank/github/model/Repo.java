@@ -19,9 +19,9 @@ public class Repo {
     }
 
     public Repo(Long id, String name, String url) {
-        this.id = id;
-        this.name = name;
-        this.url = url;
+    	this.setId(id);
+    	this.setName(name);
+    	this.setUrl(url);
     }
 
     public Long getId() {

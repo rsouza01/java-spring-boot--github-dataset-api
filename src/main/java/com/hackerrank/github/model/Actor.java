@@ -20,9 +20,9 @@ public class Actor {
     }
 
     public Actor(Long id, String login, String avatar) {
-        this.id = id;
-        this.login = login;
-        this.avatar_url = avatar;
+    	this.setId(id);
+    	this.setLogin(login);
+    	this.setAvatar_url(avatar);
     }
     
     public Long getId() {

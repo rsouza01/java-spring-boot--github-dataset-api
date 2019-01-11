@@ -41,11 +41,11 @@ public class Event {
     }
 
     public Event(Long id, String type, Actor actor, Repo repo, Timestamp createdAt) {
-        this.id = id;
-        this.type = type;
-        this.actor = actor;
-        this.repo = repo;
-        this.created_at = createdAt;
+    	this.setId(id);
+    	this.setType(type);
+    	this.setActor(actor);
+    	this.setRepo(repo);
+    	this.setCreate_at(createdAt);
     }
 
     public Long getId() {
