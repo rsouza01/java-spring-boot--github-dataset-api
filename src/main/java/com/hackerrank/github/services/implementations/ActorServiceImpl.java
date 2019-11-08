@@ -22,9 +22,9 @@ public class ActorServiceImpl implements ActorService {
 	public List<Actor> getAllActors(ActorsOrdering ordering) {
 		
 		switch(ordering) {
-			case NUMBER_OF_EVENTS: return GithubService.toList(actorRepository.findActorsOrderByNumberEventsDesc()); 
-			case MAXIMUM_STREAK: return GithubService.toList(actorRepository.findActorsOrderByMaximumStreakDesc());
-			default: return GithubService.toList(actorRepository.findActorsOrderByMaximumStreakDesc());
+			case NUMBER_OF_EVENTS: return actorRepository.findActorsOrderByNumberEventsDesc();
+			case MAXIMUM_STREAK: return actorRepository.findActorsOrderByMaximumStreakDesc();
+			default: return actorRepository.findActorsOrderByMaximumStreakDesc();
 		}
 	}
 

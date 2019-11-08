@@ -133,6 +133,7 @@ public class GithubApiRestController {
 	 * @return
 	 */
 	@RequestMapping(value = "/actors", method = RequestMethod.GET)
+	@ResponseBody
 	public ResponseEntity<List<Actor>> getAllActors(HttpServletRequest request) {
 
 		List<Actor> actors = actorService.getAllActors(ActorsOrdering.NUMBER_OF_EVENTS);
@@ -153,6 +154,7 @@ public class GithubApiRestController {
 	 * @return
 	 */
 	@RequestMapping(value = "/actors/streak", method = RequestMethod.GET)
+	@ResponseBody
 	public ResponseEntity<List<Actor>> getAllActorsOrderByStreak(HttpServletRequest request) {
 
 		List<Actor> actors = actorService.getAllActors(ActorsOrdering.MAXIMUM_STREAK);
